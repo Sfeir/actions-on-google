@@ -35,8 +35,6 @@ function processSecondToLastSession(assistant) {
 function processSession(assistant, index) {
     var productIdRef = firebase.database().ref('/sessions/' + index);
     productIdRef.once('value').then(function(snapshot) {
-        var childKey = snapshot.key;
-        var childData = snapshot.val();
 
         assistant.setContext(NEXT_SESSION_OR_MORE_INFO_CONTEXT, 50, {
             sessionIndex: index
@@ -54,8 +52,6 @@ function processMoreInformation(assistant) {
 
     var productIdRef = firebase.database().ref('/sessions/' + index);
     productIdRef.once('value').then(function(snapshot) {
-        var childKey = snapshot.key;
-        var childData = snapshot.val();
 
         assistant.setContext(NEXT_SESSION_OR_MORE_INFO_CONTEXT, 50, {
             sessionIndex: index
